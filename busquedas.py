@@ -1,5 +1,6 @@
 from linkedin_api import Linkedin
 from credenciales import *
+import json
 
 # Authenticate using any Linkedin account credentials
 api = Linkedin(USER, PWD)
@@ -19,6 +20,18 @@ contact_job = api.get_job(job_id=3972627974)
 
 print(contact_job)
 
-#contact_jobspython = api.search_jobs(selectors=[{'jobs': ['id', 'customer-job-code', 'posting-date']}], params={'title': 'mongodb django', 'count': 2})
+with open("datajobs.json", "w") as dj:
+    json.dump(contact_job, dj)
 
-#print(contact_jobspython)
+
+contact_jobspython = api.search_jobs(selectors=[{'jobs': ['id', 'customer-job-code', 'posting-date']}], params={'title': 'mongodb django', 'count': 2})
+
+
+
+#esta parte la comento porque tarda bastante
+"""
+print(contact_jobspython)
+
+with open("searchjobs.json", "w") as sj:
+    json.dump(contact_jobspython, sj)
+"""
