@@ -1,6 +1,7 @@
 from linkedin_api import Linkedin
 from credenciales import *
 import pandas as pd
+from pymongo import MongoClient
 import json
 
 api = Linkedin(USER, PWD)
@@ -9,7 +10,7 @@ api = Linkedin(USER, PWD)
 keywordslist = ["Data engieneer", "Data Developer", "Cloud", "Ingeniero de datos", "Big Data", "Inteligencia artificial", "Python Developer", "Data Analyst", "Analista de datos"]
 
 
-contact_jobs2 = api.search_jobs( keywords =  "Data developer" , location_name = "Spain") 
+contact_jobs2 = api.search_jobs( keywords =  "cloud" , location_name = "Spain") 
 #print(contact_jobs2)
 # Crear el DataFrame
 df = pd.DataFrame(contact_jobs2)
@@ -31,7 +32,24 @@ for id in id_list:
     # Crear un nuevo diccionario con solo las claves seleccionadas
     selected_data = dict(zip(keys_to_select, [jobpost[key] for key in keys_to_select]))
 
+    # Conectar a MongoDB (puedes especificar el puerto y la IP si es necesario)
+    client = MongoClient("mongodb://localhost:27017/")
+
+    # Seleccionar la base de datos (si no existe, MongoDB la crea automáticamente)
+    db = client["linkedinapi"]
+
+    # Seleccionar la colección (si no existe, MongoDB la crea automáticamente)
+    collection = db["cloud"]
+
     df = pd.concat([df, pd.DataFrame([selected_data])], ignore_index=True)
+
+    # Convertir el DataFrame a una lista de diccionarios
+    data_dict = df.to_dict("records")
+
+    # Insertar los datos en la colección
+    collection.insert_many(data_dict)
+
+   
 
     #print(jobpost)
     #print("\n================================")

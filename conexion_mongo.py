@@ -9,6 +9,8 @@ db = client["linkedinapi"]
 # Seleccionar la colección (si no existe, MongoDB la crea automáticamente)
 collection = db["borrar"]
 
+
+
 # Insertar un documento en la colección
 documento = {
     "nombre": "Juan",

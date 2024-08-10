@@ -20,14 +20,6 @@ contact_job = api.get_job(job_id=3972627974)
 
 print(contact_job)
 
-with open("datajobs.json", "w") as dj:
-    json.dump(contact_job, dj)
-
-
-
-contact_jobs2 = api.search_jobs( keywords =  "Mongodb")
-
-print(contact_jobs2)
 
 
 #contact_jobspython = api.search_jobs(selectors=[{'jobs': ['id', 'customer-job-code', 'posting-date']}], params={'title': 'mongodb django', 'count': 2})
