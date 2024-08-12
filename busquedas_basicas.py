@@ -17,9 +17,10 @@ api = Linkedin(USER, PWD)
 
 #print(contact_info)
 
-contact_job = api.get_job(job_id=3972627974)
+contact_job = api.get_job(job_id=3944659163)
+contact_jobs2 = api.search_jobs( remote = '2')
 
-
+print(contact_jobs2)
 #print(contact_job)
 description = contact_job["description"]["text"] 
 jobPostingId = contact_job["jobPostingId"] 
@@ -31,7 +32,11 @@ df = pd.DataFrame({'jobPostingId': [jobPostingId],  'title': [title], 'descripti
 
 
 # Mostrar el DataFrame
-print(df)
+#print(contact_job)
+
+print("****************************************************************")
+
+#print(df["description"])
 
 #print(text)
 

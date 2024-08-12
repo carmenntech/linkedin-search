@@ -45,8 +45,9 @@ df = pd.DataFrame(rows)
 
 # Conectar a MongoDB
 client = MongoClient("mongodb://localhost:27017/")
-db = client["linkedinapi"]
-collection = db["jobskeywords"]
+db = client["linkedin-docker"]
+collection = db["keywords"]
 
 # Insertar los datos en la colección
 collection.insert_many(df.to_dict("records"))
+
