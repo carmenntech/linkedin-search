@@ -10,7 +10,7 @@ api = Linkedin(USER, PWD)
 keywordslist = ["Data engieneer", "Data Developer", "Cloud", "Ingeniero de datos", "Big Data", "Inteligencia artificial", "Python Developer", "Data Analyst", "Analista de datos"]
 
 
-contact_jobs2 = api.search_jobs( keywords =  "sql" , location_name = "Spain")  #, location_name = "Spain"
+contact_jobs2 = api.search_jobs( keywords =  "Amazon Web Service" , location_name = "Spain")  #, location_name = "Spain"
 #print(contact_jobs2)
 # Crear el DataFrame
 df = pd.DataFrame(contact_jobs2)
@@ -18,7 +18,7 @@ df["trackingUrn"] = df["trackingUrn"].apply(lambda x: x[-10:])
 df_id = df["trackingUrn"]
 id_list = df_id.values.tolist()
 
-print(id_list)
+print(len(id_list))
 
 # Crear una lista para almacenar las filas
 rows = []
@@ -46,7 +46,7 @@ df = pd.DataFrame(rows)
 # Conectar a MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["linkedin-docker"]
-collection = db["keywords"]
+collection = db["cloud"]
 
 # Insertar los datos en la colección
 collection.insert_many(df.to_dict("records"))
