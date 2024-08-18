@@ -11,7 +11,7 @@ api = Linkedin(USER, PWD)
 keywordsCloud = ["Amazon Web Service", "Azure",  "Google Cloud"]
 keywordsSql = ["sql", "nosql"]
 keywordsLenguaje = ["python", "r", "scala"]
-keywordsReporting = ["Power bi", "Tableau", "Microstrategy"]
+keywordsReporting = ["Power bi", "Tableau"]
 
 total = 0
 rows = []
@@ -76,7 +76,7 @@ df = pd.DataFrame(rows4)
 # Conectar a MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["linkedinapi"]
-collection = db["keywords2"]
+collection = db["keywords"]
 
 # Insertar los datos en la colección
 collection.insert_many(df.to_dict("records"))
