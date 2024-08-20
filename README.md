@@ -1,7 +1,6 @@
 
-Uso de la api no oficial de linkedin -> 
-https://github.com/tomquirk/linkedin-api
-
+Uso de la api no oficial de linkedin para realizar busquedas de ofertas de empleo, perfiles, empresas, post...
+Para la documentación de la misma -> https://github.com/tomquirk/linkedin-api
 
 
 # Instalación 
