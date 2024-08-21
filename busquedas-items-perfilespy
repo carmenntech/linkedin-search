@@ -23,7 +23,7 @@ api = Linkedin(USER, PWD)
 # Realizar un find() sin filtro (traerá todos los documentos de la colección)
 client = MongoClient("mongodb://localhost:27017/")
 db = client["linkedinapi"]
-collection = db["perfiles-mongo"]
+collection = db["perfiles-mongo-barcelona"]
 urn_perfiles = collection.find({}, {"urn_id": 1, "_id":0})
 print(type(urn_perfiles))
 urn_perfiles = [item['urn_id'] for item in urn_perfiles]
